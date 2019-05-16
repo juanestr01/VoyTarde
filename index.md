@@ -1,30 +1,74 @@
-## Welcome to GitHub Pages
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta property="og:title" content="Prueba">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-You can use the [editor on GitHub](https://github.com/juanestr01/VoyTarde/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+</head>
+<body>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<div id="root" class="jumbotron">
+<h1>Bienvenido a VoyTarde</h1>
+<p>En esta App podrás saber cómo llegar rápido a clase: ¿Escaleras o Ascensor?</p>
+</div>
 
-### Markdown
+<form>
+A qué piso vas?: <input type="text" name="Destino" value=""><br>
+Cuántas personas hay delante de ti?: <input type="text" name="Posicion" value=""><br>
+En qué piso va el ascensor?: <input type="text" name="Ascensor" value=""><br>
+<input type="button" value="Calcular" onclick="calcSum()">
+</form>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Te rinde más en: <input type="text" name="res"><br>
+<script>
+    function calcSum() {
+        let Dest = document.getElementsByName("Destino")[0].value;
+        let Fila = document.getElementsByName("Posicion")[0].value;
+				let Asc = document.getElementsByName("Ascensor")[0].value;
+        var rta
+        if (Number(Dest)<3) {
+          rta = "Escalera";
+        } else if (Number(Dest)==4) {
+            if(Number(Fila)<3){
+              rta = "Ascensor"
+            } else{
+              rta = "Escalera"
+            }
+        } else if (Number(Dest)==5){
+            if(Number(Fila)<12){
+              rta = "Ascensor"
+            }else if (Number(Asc)<5){
+              rta = "Escaleras"
+            } else{
+              rta = "Ascensor"
+            }
 
-```markdown
-Syntax highlighted code block
+        }else if(Number(Dest)==6){
+            if(Number(Fila)>14 && Number(Asc)<4){
+              rta = "Escaleras"
+            }else{
+              rta="Ascensor"
+            }
+        }else {
+          rta= "Chequea tus datos";
+        }
 
-# Header 1
-## Header 2
-### Header 3
+        //let rta = Number(num1) + Number(num2);
+        //let rta = 8
+        document.getElementsByName("res")[0].value = rta;
+    }
+</script>
 
-- Bulleted
-- List
+<div id="root" class="jumbotron">
+  <p>Recuerda que esta app funciona mejor en horas pico,</p>
+  <p> y si tienes una discapacidad el ascensor siempre será la mejor opción </p>
+</div>
 
-1. Numbered
-2. List
+</body>
+</html>
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
